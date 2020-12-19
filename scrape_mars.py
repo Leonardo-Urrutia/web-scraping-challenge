@@ -117,5 +117,3 @@ def scrape_info():
 
 
     return mars_data
-
-print(scrape_info())
