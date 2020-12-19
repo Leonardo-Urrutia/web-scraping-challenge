@@ -1,7 +1,6 @@
-# Import BeautifulSoup
+# Importing modules for script
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
-import pandas as pd
 import time
 
 def init_browser():
@@ -11,7 +10,7 @@ def init_browser():
 
 def scrape_info():
     browser = init_browser()
-
+    mars_data = {}
     # URL to Nasa's Mars news page
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
@@ -26,10 +25,8 @@ def scrape_info():
     content_title = first_news_results.find("div", class_="content_title").text
     first_article_p_txt = first_news_results.find("div", class_="article_teaser_body").text
 
-    article_dict = {
-        "title": content_title,
-        "summary": first_article_p_txt
-    }
+    mars_data["title"] = content_title
+    mars_data["summary"] = first_article_p_txt
 
     # Storing url to page to grab the featured image and base url to concat to src of img
     featured_image_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -44,6 +41,8 @@ def scrape_info():
     featured_image_container = soup.find("div", class_="carousel_container")
     featured_img_half_link = featured_image_container.find("a", class_="button fancybox")["data-fancybox-href"]
     full_img_url = f'{mars_url}{featured_img_half_link}'
+
+    mars_data["featured_img"] = full_img_url
 
     # URLS for beautiful images of hemispheres
     hemi_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -112,12 +111,11 @@ def scrape_info():
     hemi_dict = {"title": hemi_title, "img_url": full_valles_img}
     hemisphere_image_urls.append(hemi_dict)
 
+    mars_data["hemi"] = hemisphere_image_urls
+
     browser.quit()
 
-    mars_data = {
-        "news": article_dict,
-        "featured_img": full_img_url,
-        "hemispheres": hemisphere_image_urls
-    }
 
     return mars_data
+
+print(scrape_info())
