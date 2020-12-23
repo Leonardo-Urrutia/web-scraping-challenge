@@ -20,7 +20,75 @@
     <h2>Latest Mars News</h2>
     <h3>{{mars.title}}</h3>
     <p>{{mars.summary}}</p>
-  </div>
+
+    <div class="row">
+      <div class="col-md-7">
+        <h2>Featured Mars Image</h2>
+        <img src={{mars.featured_img}}>
+      </div>
+      <div class="col-md-5 table-responsive-sm table-responsive-md">
+        <table border="1" class="table table-striped table-hover" style="margin-top: 20px;">
+          <thead>
+            <tr style="text-align: center;">
+              <th></th>
+              <th>Mars</th>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Equatorial Diameter:</th>
+              <td>6,792 km</td>
+            </tr>
+            <tr>
+              <th>Polar Diameter:</th>
+              <td>6,752 km</td>
+            </tr>
+            <tr>
+              <th>Mass:</th>
+              <td>6.39 × 10^23 kg (0.11 Earths)</td>
+            </tr>
+            <tr>
+              <th>Moons:</th>
+              <td>2 (Phobos &amp; Deimos)</td>
+            </tr>
+            <tr>
+              <th>Orbit Distance:</th>
+              <td>227,943,824 km (1.38 AU)</td>
+            </tr>
+            <tr>
+              <th>Orbit Period:</th>
+              <td>687 days (1.9 years)</td>
+            </tr>
+            <tr>
+              <th>Surface Temperature:</th>
+              <td>-87 to -5 °C</td>
+            </tr>
+            <tr>
+              <th>First Record:</th>
+              <td>2nd millennium BC</td>
+            </tr>
+            <tr>
+              <th>Recorded By:</th>
+              <td>Egyptian astronomers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h2>Mars Hemispheres</h2>
+    <hr />
+    <div class="row">
+    {% for img in mars.hemi%}
+      <div class="col-md-3">
+        <h3>{{img.title}}</h3>
+        <img src={{img.img_url}} style="max-width: 90%;">
+      </div>
+    {% endfor %}
+    </div>
   </div>
 </body>
 
