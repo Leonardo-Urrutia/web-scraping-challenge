@@ -3,9 +3,9 @@
 In this challenge, I utilize powerful Chromedriver and the BeautifulSoup Python module to scrape several websites about Mars. I store the scraped data into a local MongoDB database and display the data with the Flask Python module.
 
 
-First portion of scraped data is the most recent news title and teaser summary from the mars.nasa.gob website.
+First portion of scraped data is the most recent news title and teaser summary from the mars.nasa.gov/ website.
 
-Second portion of scraped data is from the jpl.nasa.gov website for a featured image of mars. This image periodically changes roughly every hour, so results may vary if you try to rerun my scripts.
+Second portion of scraped data is from the jpl.nasa.gov/ website for a featured image of mars. This image periodically changes roughly every hour, so results may vary if you try to rerun my scripts.
 
 I used the pandas Python module to import the tables from space-facts.com/mars/ and clean up the data to be displayed on my flask app.
 
@@ -20,7 +20,7 @@ Once you have your chromedriver pathed and your MongoDB server connected, run th
 
 There will be no data displayed on the landing page until you hit the button "Grab some data!". This button will initiate the webscraping. Sit back, take a sip of a cold one, and enjoy the scraping at work!
 
-when the scraping is completed, the chromedriver will close and the data will now be on the landing page!
+When the scraping is completed, the chromedriver will close and the data will now be on the landing page!
 
 
 
